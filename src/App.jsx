@@ -43,7 +43,7 @@ export default function App() {
           <Route path="alex" element={<Procureone />} />
           <Route path="maria" element={<Procuretwo />} />
 
-          {/* Finance */}
+          {/* Finance 
           <Route path="Finance" element={<Finance/>} />
           <Route path="ChartsOfAccount" element={<ChartOfAccounts/>} />
           <Route path="PostingJournal" element={<PostingJournal/>} />
@@ -58,7 +58,7 @@ export default function App() {
           <Route path="AccountsReceivable" element={<h1>Accounts Receivable</h1>} />
           <Route path="BudgetingForecasting" element={<h1>Budgeting & Forecasting</h1>} />
           <Route path="BankReconciliation" element={<h1>Bank Reconciliation</h1>} />
-          <Route path="FinancialReporting" element={<h1>Financial Reporting</h1>} />
+          <Route path="FinancialReporting" element={<h1>Financial Reporting</h1>} />*/}
 
           {/* Inventory */}
           <Route path="Inventory" element={<h1>Inventory</h1>} />
