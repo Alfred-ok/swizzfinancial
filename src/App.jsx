@@ -26,7 +26,7 @@ import Finance from "./pages/Finance/Finance";
 import GeneralLedger from "./pages/Finance/GeneralLedger";
 
 import InvLocation from "./pages/Inventory/locations/InvLocation";
-import InventoryDashboard from "./pages/Inventory/index.jsX";
+import InventoryDashboard from "./pages/Inventory/InventoryDashboard.jsx";
 
 
 export default function App() {
