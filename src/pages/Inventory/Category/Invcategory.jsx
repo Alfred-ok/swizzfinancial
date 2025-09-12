@@ -87,7 +87,17 @@ export default function Invcategory() {
         </div>
 
         {loading ? (
-          <p className="text-gray-500 text-center">Loading...</p>
+          <div className="space-y-2 animate-pulse">
+          {Array.from({ length: 3 }).map((_, i) => (
+            <div key={i} className="grid grid-cols-5 gap-4 bg-gray-50 p-6 rounded">
+              <div className="h-4 bg-gray-200 rounded"></div>
+              <div className="h-4 bg-gray-200 rounded"></div>
+              <div className="h-4 bg-gray-200 rounded"></div>
+              <div className="h-4 bg-gray-200 rounded"></div>
+              <div className="h-4 bg-gray-200 rounded text-right"></div>
+            </div>
+          ))}
+        </div>
         ) : categories.length > 0 ? (
           <div className="space-y-2">
             {categories.map((cat) => (
@@ -104,8 +114,8 @@ export default function Invcategory() {
                   {new Date(cat.CreatedDate).toLocaleString()}
                 </span>
                 <span
-                  className={`font-semibold ${
-                    cat.IsLocked ? "text-red-600" : "text-green-600"
+                  className={`text-sm w-16 rounded-2xl text-center flex items-start justify-center p-1 ${
+                    cat.IsLocked ? "text-white bg-red-600" : "text-white bg-green-600"
                   }`}
                 >
                   {cat.IsLocked ? "Locked" : "Open"}

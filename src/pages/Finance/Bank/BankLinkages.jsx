@@ -134,7 +134,7 @@ export default function BankLinkages() {
   const [drawerOpen, setDrawerOpen] = useState(false);
 
   const fetchLinkages = () => {
-    fetch("https://01b8e0a81b7e.ngrok-free.app/api/values/getBankLinkages", {
+    fetch(`${import.meta.env.VITE_APP_BASE_URL}/api/values/getBankLinkages`, {
       headers: { "ngrok-skip-browser-warning": "true" },
     })
       .then((res) => res.json())

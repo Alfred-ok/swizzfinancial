@@ -139,7 +139,7 @@ export default function AddBankWithLinkagesDrawer({ open, onClose, onSuccess }) 
 
     try {
       const res = await fetch(
-        "https://01b8e0a81b7e.ngrok-free.app/api/values/AddBankWithLinkages",
+        `${import.meta.env.VITE_APP_BASE_URL}/api/values/AddBankWithLinkages`,
         {
           method: "POST",
           headers: { "Content-Type": "application/json", "ngrok-skip-browser-warning": "true" },

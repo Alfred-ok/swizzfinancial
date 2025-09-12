@@ -75,8 +75,9 @@ export default function EditInvItemDrawer({ open, onClose, onSuccess, item }) {
   const handleSubmit = async (e) => {
     e.preventDefault();
     setLoading(true);
+    console.log(formData);
     try {
-      const res = await fetch(`${import.meta.env.VITE_APP_INV_URL}/api/items`, {
+      const res = await fetch(`${import.meta.env.VITE_APP_INV_URL}/api/items/${item.Id}`, {
         method: "PUT",
         headers: {
           "Content-Type": "application/json",

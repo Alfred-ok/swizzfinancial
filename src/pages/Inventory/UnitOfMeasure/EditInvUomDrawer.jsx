@@ -29,7 +29,7 @@ export default function EditInvUomDrawer({ open, onClose, onSuccess, uom }) {
 
     try {
       const res = await fetch(
-        `${import.meta.env.VITE_APP_INV_URL}/api/unit-of-measure`,
+        `${import.meta.env.VITE_APP_INV_URL}/api/unit-of-measure/${uom.Id}`,
         {
           method: "PUT",
           headers: {

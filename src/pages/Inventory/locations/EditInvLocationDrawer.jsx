@@ -24,7 +24,7 @@ export default function EditInvLocationDrawer({ open, onClose, onSuccess, locati
     setLoading(true);
 
     try {
-      const res = await fetch(`${import.meta.env.VITE_APP_INV_URL}/api/locations`, {
+      const res = await fetch(`${import.meta.env.VITE_APP_INV_URL}/api/locations/${location.Id}`, {
         method: "PUT",
         headers: {
           "Content-Type": "application/json",

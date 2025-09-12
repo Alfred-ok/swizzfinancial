@@ -2,26 +2,27 @@ import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
 import Layout from "./components/Layout";
 //import Home from "./pages/Home";
 //import Channel from "./pages/Channel";
-//import Settings from "./pages/Settings";
+import Settings from "./pages/Settings";
 import Employees from "./pages/HR/Employees";
 import Departments from "./pages/HR/Departments";
 import Leaves from "./pages/HR/Leave";
 import Login from "./pages/Auth/Login";
 import Procureone from "./pages/Procurement/procureone";
 import Procuretwo from "./pages/Procurement/procuretwo";
-//import GeneralLedger from "./pages/Finance/GeneralLedger";
-//import Finance from "./pages/Finance/Finance";
+import GeneralLedger from "./pages/Finance/GeneralLedger";
+import Finance from "./pages/Finance/Finance";
 import HR from "./pages/HR/HR";
 import Procument from "./pages/Procurement/Procument";
-//import ChartOfAccounts from "./pages/Finance/COA/ChartsOfAccount";
-//import PostingJournal from "./pages/Finance/POST/postingJournal";
-//import BankLinkages from "./pages/Finance/Bank/BankLinkages";
+import ChartOfAccounts from "./pages/Finance/COA/ChartsOfAccount";
+import PostingJournal from "./pages/Finance/POST/postingJournal";
+import BankLinkages from "./pages/Finance/Bank/BankLinkages";
 import Invcategory from "./pages/Inventory/Category/Invcategory";
 import InvLocation from "./pages/Inventory/locations/InvLocation";
 import InvUom from "./pages/Inventory/UnitOfMeasure/InvUom";
 import Invitem from "./pages/Inventory/Items/Invitem";
 import InvJournal from "./pages/Inventory/Journals/InvJournal";
 import InvTransactions from "./pages/Inventory/Transcations/InvTransactions";
+import InventoryDashboard from "./pages/Inventory";
 
 export default function App() {
   return (
@@ -43,12 +44,12 @@ export default function App() {
           <Route path="alex" element={<Procureone />} />
           <Route path="maria" element={<Procuretwo />} />
 
-          {/* Finance 
+          {/* Finance */}
           <Route path="Finance" element={<Finance/>} />
-          <Route path="ChartsOfAccount" element={<ChartOfAccounts/>} />
-          <Route path="PostingJournal" element={<PostingJournal/>} />
-          <Route path="BankLinkages" element={<BankLinkages/>} />
-          <Route path="GeneralLedger" element={<GeneralLedger/>} />
+          <Route path="Finance/ChartsOfAccount" element={<ChartOfAccounts/>} />
+          <Route path="Finance/PostingJournal" element={<PostingJournal/>} />
+          <Route path="Finance/BankLinkages" element={<BankLinkages/>} />
+          <Route path="Finance/GeneralLedger" element={<GeneralLedger/>} />
           <Route path="GeneralLedger/reports" element={<h1>GL Reports</h1>} />
           <Route path="GeneralLedger/settings" element={<h1>GL Settings</h1>} />
 
@@ -58,10 +59,10 @@ export default function App() {
           <Route path="AccountsReceivable" element={<h1>Accounts Receivable</h1>} />
           <Route path="BudgetingForecasting" element={<h1>Budgeting & Forecasting</h1>} />
           <Route path="BankReconciliation" element={<h1>Bank Reconciliation</h1>} />
-          <Route path="FinancialReporting" element={<h1>Financial Reporting</h1>} />*/}
+          <Route path="FinancialReporting" element={<h1>Financial Reporting</h1>} />
 
           {/* Inventory */}
-          <Route path="Inventory" element={<h1>Inventory</h1>} />
+          <Route path="Inventory" element={<InventoryDashboard/>} />
           <Route path="invcategories" element={<Invcategory/>} />
           <Route path="Invlocations" element={<InvLocation/>} />
           <Route path="invUnitOfMeasure" element={<InvUom/>} />

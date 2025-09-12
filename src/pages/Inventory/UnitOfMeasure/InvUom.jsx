@@ -64,13 +64,13 @@ export default function InvUom() {
   return (
     <div className="bg-white m-8 px-8 py-8 shadow-2xl rounded-lg relative">
       {/* Header */}
-      <div className="flex justify-between items-center mb-6 bg-green-800 px-6 py-3 rounded-2xl">
+      <div className="flex justify-between items-center mb-6 bg-indigo-800 px-6 py-3 rounded-2xl">
         <h2 className="text-xl font-bold text-white flex items-center gap-2">
           <FaBalanceScale className="text-white" /> Units of Measure
         </h2>
         <Button
           onClick={() => setAddDrawerOpen(true)}
-          className="bg-green-600 hover:bg-green-700 flex items-center gap-2"
+          className="bg-indigo-600 hover:bg-indigo-700 flex items-center gap-2"
         >
           <FaPlus /> Add UOM
         </Button>
@@ -87,7 +87,17 @@ export default function InvUom() {
         </div>
 
         {loading ? (
-          <p className="text-gray-500 text-center">Loading...</p>
+          <div className="space-y-2 animate-pulse">
+          {Array.from({ length: 3 }).map((_, i) => (
+            <div key={i} className="grid grid-cols-5 gap-4 bg-gray-50 p-6 rounded">
+              <div className="h-4 bg-gray-200 rounded"></div>
+              <div className="h-4 bg-gray-200 rounded"></div>
+              <div className="h-4 bg-gray-200 rounded"></div>
+              <div className="h-4 bg-gray-200 rounded"></div>
+              <div className="h-4 bg-gray-200 rounded text-right"></div>
+            </div>
+          ))}
+        </div>
         ) : uoms.length > 0 ? (
           <div className="space-y-2">
             {uoms.map((uom) => (

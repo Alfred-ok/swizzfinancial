@@ -63,7 +63,7 @@ export default function AddInvUomDrawer({ open, onClose, onSuccess }) {
             exit={{ x: "100%" }}
             transition={{ type: "spring", stiffness: 300, damping: 30 }}
           >
-            <div className="p-4 flex justify-between items-center bg-green-600 rounded-2xl m-2">
+            <div className="p-4 flex justify-between items-center bg-indigo-600 rounded-2xl m-2">
               <h2 className="font-bold text-lg text-white">Add UOM</h2>
               <Button variant="outline" size="sm" onClick={onClose}>
                 Close
@@ -97,7 +97,7 @@ export default function AddInvUomDrawer({ open, onClose, onSuccess }) {
                 <Button
                   type="submit"
                   disabled={loading}
-                  className="w-full bg-green-600 hover:bg-green-700"
+                  className="w-full bg-indigo-600 hover:bg-indigo-700"
                 >
                   {loading ? "Saving..." : "Save UOM"}
                 </Button>

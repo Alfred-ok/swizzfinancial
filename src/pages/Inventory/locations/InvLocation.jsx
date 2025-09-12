@@ -86,7 +86,17 @@ export default function InvLocation() {
         </div>
 
         {loading ? (
-          <p className="text-gray-500 text-center py-6">Loading...</p>
+        <div className="space-y-2 animate-pulse">
+          {Array.from({ length: 3 }).map((_, i) => (
+            <div key={i} className="grid grid-cols-5 gap-4 bg-gray-50 p-6 rounded">
+              <div className="h-4 bg-gray-200 rounded"></div>
+              <div className="h-4 bg-gray-200 rounded"></div>
+              <div className="h-4 bg-gray-200 rounded"></div>
+              <div className="h-4 bg-gray-200 rounded"></div>
+              <div className="h-4 bg-gray-200 rounded text-right"></div>
+            </div>
+          ))}
+        </div>
         ) : locations.length > 0 ? (
           <div className="space-y-2">
             {locations.map((loc) => (

@@ -230,9 +230,9 @@ const mockWorkspaces = [
     title: "Finance",
     icon: <RiBankFill className="text-2xl" />,
     dms: [
-      { id: "ChartsOfAccount", name: "Charts Of Account", sublinks: [] },
-      { id: "PostingJournal", name: "Posting Journal", sublinks: [] },
-      { id: "BankLinkages", name: "Bank Linkages", sublinks: [] },
+      { id: "Finance/ChartsOfAccount", name: "Charts Of Account", sublinks: [] },
+      { id: "Finance/PostingJournal", name: "Posting Journal", sublinks: [] },
+      { id: "Finance/BankLinkages", name: "Bank Linkages", sublinks: [] },
       /*{
         id: "GeneralLedger",
         name: "General Ledger",
