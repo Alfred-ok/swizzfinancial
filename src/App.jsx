@@ -1,7 +1,7 @@
 import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
 import Layout from "./components/Layout";
 
-import InventoryDashboard from "./pages/Inventory/index.jsX";
+
 import Invcategory from "./pages/Inventory/Category/Invcategory";
 import InvUom from "./pages/Inventory/UnitOfMeasure/InvUom";
 import Invitem from "./pages/Inventory/Items/Invitem";
@@ -26,6 +26,7 @@ import Finance from "./pages/Finance/Finance";
 import GeneralLedger from "./pages/Finance/GeneralLedger";
 
 import InvLocation from "./pages/Inventory/locations/InvLocation";
+import InventoryDashboard from "./pages/Inventory/index.jsX";
 
 
 export default function App() {
