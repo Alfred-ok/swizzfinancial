@@ -13,7 +13,7 @@ import GeneralLedger from "./pages/Finance/GeneralLedger";
 import HR from "./pages/HR/HR";
 import Procument from "./pages/Procurement/Procument";
 import ChartOfAccounts from "./pages/Finance/COA/ChartsOfAccount";
-import PostingJournal from "./pages/Finance/POST/postingJournal";
+//import PostingJournal from "./pages/Finance/POST/postingJournal";
 import BankLinkages from "./pages/Finance/Bank/BankLinkages";
 import Invcategory from "./pages/Inventory/Category/Invcategory";
 import InvLocation from "./pages/Inventory/locations/InvLocation";
@@ -23,6 +23,7 @@ import InvJournal from "./pages/Inventory/Journals/InvJournal";
 import InvTransactions from "./pages/Inventory/Transcations/InvTransactions";
 import InventoryDashboard from "./pages/Inventory/index.jsX";
 import Finance from "./pages/Finance/Finance";
+import PostingJournal from "./pages/Finance/POST/postingJournal";
 
 
 export default function App() {
