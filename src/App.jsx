@@ -10,7 +10,6 @@ import Login from "./pages/Auth/Login";
 import Procureone from "./pages/Procurement/procureone";
 import Procuretwo from "./pages/Procurement/procuretwo";
 import GeneralLedger from "./pages/Finance/GeneralLedger";
-import Finance from "./pages/Finance/Finance";
 import HR from "./pages/HR/HR";
 import Procument from "./pages/Procurement/Procument";
 import ChartOfAccounts from "./pages/Finance/COA/ChartsOfAccount";
@@ -22,7 +21,9 @@ import InvUom from "./pages/Inventory/UnitOfMeasure/InvUom";
 import Invitem from "./pages/Inventory/Items/Invitem";
 import InvJournal from "./pages/Inventory/Journals/InvJournal";
 import InvTransactions from "./pages/Inventory/Transcations/InvTransactions";
-import InventoryDashboard from "./pages/Inventory";
+import InventoryDashboard from "./pages/Inventory/index.jsX";
+import Finance from "./pages/Finance/Finance";
+
 
 export default function App() {
   return (
