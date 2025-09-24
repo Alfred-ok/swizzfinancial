@@ -337,7 +337,7 @@ import { Input } from "@/components/ui/input";
 import { Textarea } from "@/components/ui/textarea";
 import { Table, TableBody, TableCell, TableHead, TableHeader, TableRow } from "@/components/ui/table";
 import { Label } from "@/components/ui/label";
-import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from "@/components/ui/select";
+import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue} from "@/components/ui/select";
 import { Badge } from "@/components/ui/badge";
 import { Switch } from "@/components/ui/switch";
 import { Separator } from "@/components/ui/separator";
@@ -419,8 +419,10 @@ export default function PostingJournal() {
         Description: l.description || memo || "N/A",
       }));
 
+      console.log(apiPayload);
+
     try {
-      const res = await fetch(`${import.meta.env.VITE_APP_BASE_URL}/api/values/PostJournal`, {
+      const res = await fetch(`${import.meta.env.VITE_APP_FIN_URL}/api/values/PostJournal`, {
         method: "POST",
         headers: { "ngrok-skip-browser-warning": "true", "Content-Type": "application/json" },
         body: JSON.stringify(apiPayload),
@@ -442,7 +444,7 @@ export default function PostingJournal() {
   useEffect(() => {
     const fetchAccounts = async () => {
       try {
-        const res = await fetch(`${import.meta.env.VITE_APP_BASE_URL}/api/values/GetChartOfAccount`, {
+        const res = await fetch(`${import.meta.env.VITE_APP_FIN_URL}/api/values/GetChartOfAccount`, {
           headers: { "ngrok-skip-browser-warning": "true" },
         });
         const data = await res.json();
@@ -462,7 +464,7 @@ export default function PostingJournal() {
 
     const fetchBranches = async () => {
       try {
-        const res = await fetch(`${import.meta.env.VITE_APP_BASE_URL}/api/values/branches`, {
+        const res = await fetch(`${import.meta.env.VITE_APP_FIN_URL}/api/values/branches`, {
           headers: { "ngrok-skip-browser-warning": "true" },
         });
         const data = await res.json();
@@ -575,7 +577,7 @@ export default function PostingJournal() {
                         <SelectTrigger className="w-full bg-white">
                           <SelectValue placeholder="Select account" />
                         </SelectTrigger>
-                        <SelectContent>
+                        <SelectContent className="max-h-100 overflow-y-auto">      
                           {accountOptions.map((a) => (
                             <SelectItem key={a.id} value={a.id}>
                               {a.name} ({a.type})

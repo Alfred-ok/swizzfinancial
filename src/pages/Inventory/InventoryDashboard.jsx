@@ -116,10 +116,11 @@ export default function InventoryDashboard() {
               </CardHeader>
               <CardContent>
                 <div className="grid gap-4 md:grid-cols-4">
-                  <KPI label="Receipts" value="1,200" trend="up" delta="+8%" icon={<TrendingUp className="h-4 w-4"/>}/>
+                  <KPI label="Receipts" value="1,200" trend="up" delta="+8%" icon={<TrendingUp className="h-4 w-4"/>} className="bg-indigo-600"/>
                   <KPI label="Issues" value="980" trend="down" delta="-3%" icon={<TrendingDown className="h-4 w-4"/>}/>
                   <KPI label="Transfers" value="320" trend="up" delta="+5%" icon={<Truck className="h-4 w-4"/>}/>
-                  <KPI label="Adjustments" value="45" trend="neutral" delta="~" icon={<ClipboardCheck className="h-4 w-4"/>}/>
+                  <KPI label="Adjustments" value="45" trend="neutral" delta="~" icon={<ClipboardCheck className="h-4 w-4 text-indigo-600"/>}/>
+                  
                 </div>
 
                 <div className="mt-6 h-48 w-full">
@@ -127,14 +128,14 @@ export default function InventoryDashboard() {
                     <AreaChart data={stockFlow} margin={{ top: 10, right: 10, left: 0, bottom: 0 }}>
                       <defs>
                         <linearGradient id="stock" x1="0" y1="0" x2="0" y2="1">
-                          <stop offset="5%" stopColor="#f97316" stopOpacity={0.35}/>
-                          <stop offset="95%" stopColor="#f97316" stopOpacity={0}/>
+                          <stop offset="5%" stopColor="#4f39f6" stopOpacity={0.35}/>
+                          <stop offset="95%" stopColor="#4f39f6" stopOpacity={0}/>
                         </linearGradient>
                       </defs>
                       <XAxis dataKey="name" tickLine={false} axisLine={false} />
                       <YAxis tickLine={false} axisLine={false} />
                       <Tooltip contentStyle={{ borderRadius: 12 }} />
-                      <Area type="monotone" dataKey="value" stroke="#f97316" fill="url(#stock)" strokeWidth={2} />
+                      <Area type="monotone" dataKey="value" stroke="#4f39f6" fill="url(#stock)" strokeWidth={2} />
                     </AreaChart>
                   </ResponsiveContainer>
                 </div>

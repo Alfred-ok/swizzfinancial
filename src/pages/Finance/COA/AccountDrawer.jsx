@@ -17,16 +17,22 @@ import {
   TableHeader,
   TableRow,
 } from "@/components/ui/table";
+import NotFoundImage from "/assets/scopefinding.png";
 
 export default function AccountDrawer({ account, open, onClose }) {
   const [transactions, setTransactions] = useState([]);
+
+
+  console.log(account);
 
   // Fetch transactions based on selected account
   useEffect(() => {
     if (!account?.Id) return;
 
+    console.log(account.Id)
+
     fetch(
-      `${import.meta.env.VITE_APP_BASE_URL}/api/values/GeneralLedgerTransactions?chartOfAccountId=${account.Id}`,
+      `${import.meta.env.VITE_APP_FIN_URL}/api/values/GeneralLedgerTransactions?chartOfAccountId=${account.Id}`,
       { headers: { "ngrok-skip-browser-warning": "true" } }
     )
       .then((res) => res.json())
@@ -48,7 +54,7 @@ export default function AccountDrawer({ account, open, onClose }) {
           <motion.div
             className="fixed inset-0 bg-black z-40"
             initial={{ opacity: 0 }}
-            animate={{ opacity: 0.4 }}
+            animate={{ opacity: 0.5 }}
             exit={{ opacity: 0 }}
             transition={{ duration: 0.3 }}
             onClick={onClose}
@@ -56,7 +62,7 @@ export default function AccountDrawer({ account, open, onClose }) {
 
           {/* Drawer */}
           <motion.div
-            className="fixed top-0 right-0 h-full w-180 bg-white shadow-xl z-50 flex flex-col"
+            className="fixed top-5 right-5 rounded-xl w-180 bg-white shadow-xl z-50 flex flex-col"
             initial={{ x: "100%" }}
             animate={{ x: 0 }}
             exit={{ x: "100%" }}
@@ -76,62 +82,76 @@ export default function AccountDrawer({ account, open, onClose }) {
             <div className="p-4 space-y-4 overflow-y-auto flex-1">
               {/* 🔹 Compact Account Overview Card */}
               {account && (
-                <Card className="rounded-2xl shadow-md bg-gradient-to-r from-indigo-600 to-purple-600 text-white hover:shadow-lg transition-shadow">
-                  <CardHeader>
-                    <CardTitle className="text-lg font-semibold">
-                      Account Overview
-                    </CardTitle>
-                  </CardHeader>
-                  <CardContent className="grid grid-cols-2 gap-8 text-sm items-start">
-                    {/* Left: Balance */}
-                    <div className="bg-gradient-to-r from-indigo-800 to-indigo-700 rounded-2xl p-4 pb-10">
-                      <p className="text-xs opacity-80">Balance</p>
-                      <p className="text-3xl font-bold">
-                        {account.Balance.toLocaleString("en-US", {
-                          style: "currency",
-                          currency: "USD",
-                        })}
-                      </p>
+                <Card className="rounded-2xl shadow-lg bg-black text-white p-4 space-y-6">
+                  {/* Card & Balance Section */}
+                  <div className="flex flex-col md:flex-row items-start md:items-center justify-between gap-6">
+                    {/* Fake Card Preview */}
+                    <div className="bg-gradient-to-r from-gray-600 to-gray-800 rounded-2xl p-6 w-100 text-white shadow-inner ">
+                      <div className="mb-6 flex justify-between">
+                        <div className="w-12 h-8 bg-gray-400 px-2 rounded-md flex items-center justify-center"> 
+                        </div>
+                        <div>Code {account.Code || "XXXX"}</div>
+                      </div>
+                      <div className="mb-4">
+                        <p className="text-gray-400 text-sm">Balance amount</p>
+                        <p className="text-3xl font-bold">
+                          {account.Balance.toLocaleString("en-US", {
+                            style: "currency",
+                            currency: "USD",
+                          })}
+                        </p>
+                      </div>
+
+                      <div className="flex justify-between text-sm">
+                        <div>
+                          <p className="text-gray-400">Debit</p>
+                          <p className="font-semibold">
+                            {totalDebit.toLocaleString("en-US", {
+                              style: "currency",
+                              currency: "USD",
+                            })}
+                          </p>
+                        </div>
+                        <div>
+                          <p className="text-gray-400">Credit</p>
+                          <p className="font-semibold">
+                            {totalCredit.toLocaleString("en-US", {
+                              style: "currency",
+                              currency: "USD",
+                            })}
+                          </p>
+                        </div>
+                      </div>  
                     </div>
 
-                    {/* Right: Other Info */}
-                    <div className="grid grid-cols-2 gap-2 text-xs border-t-2 border-b-2 p-4 rounded-2xl border-indigo-400">
+
+
+
+                    
+
+                    {/* Available Amount */}
+                    <div className="flex-1 space-y-6">
                       <div>
-                        <p className="opacity-80">Debit</p>
-                        <p className="font-semibold text-sm">
-                          {totalDebit.toLocaleString("en-US", {
-                            style: "currency",
-                            currency: "USD",
-                          })}
+                        <p className="text-gray-400 text-sm">Description</p>
+                        <p className="text-3xl font-bold">
+                          {account.Description}
                         </p>
                       </div>
-                      <div>
-                        <p className="opacity-80">Credit</p>
-                        <p className="font-semibold text-sm">
-                          {totalCredit.toLocaleString("en-US", {
-                            style: "currency",
-                            currency: "USD",
-                          })}
-                        </p>
+
+                      <div className="flex justify-between text-sm">
+                        <div>
+                          <p className="text-gray-400">Category</p>
+                          <p className="font-semibold">
+                            {account.CategoryDescription}
+                          </p>
+                        </div>
                       </div>
-                      <div>
-                        <p className="opacity-80">Code</p>
-                        <p className="font-medium">{account.Code}</p>
-                      </div>
-                      <div>
-                        <p className="opacity-80">Type</p>
-                        <p className="font-medium">{account.TypeDescription}</p>
-                      </div>
-                      <div className="col-span-2">
-                        <p className="opacity-80">Created</p>
-                        <p className="font-medium">
-                          {new Date(account.CreatedDate).toLocaleDateString()}
-                        </p>
-                      </div>
+
                     </div>
-                  </CardContent>
+                  </div>
                 </Card>
               )}
+
 
               {/* Transactions Table */}
               <div className="mt-4 ">
@@ -140,10 +160,11 @@ export default function AccountDrawer({ account, open, onClose }) {
                   <TableHeader>
                     <TableRow>
                       <TableHead className="text-center text-gray-50">Date</TableHead>
+                      <TableHead className="text-center text-gray-50">Description</TableHead>
                       <TableHead className="text-center text-gray-50">Debit</TableHead>
                       <TableHead className="text-center text-gray-50">Credit</TableHead>
                       <TableHead className="text-center text-gray-50">Balance</TableHead>
-                      <TableHead className="text-center text-gray-50">Description</TableHead>
+                      <TableHead className="text-center text-gray-50">Bal Account</TableHead>
                     </TableRow>
                   </TableHeader>
                   <TableBody>
@@ -158,23 +179,34 @@ export default function AccountDrawer({ account, open, onClose }) {
                               tx.JournalValueDate
                             ).toLocaleDateString()}
                           </TableCell>
+                          <TableCell>
+                            {tx.JournalPrimaryDescription}
+                          </TableCell>
                           <TableCell>{tx.Debit.toLocaleString()}</TableCell>
                           <TableCell>{tx.Credit.toLocaleString()}</TableCell>
                           <TableCell>
                             {tx.RunningBalance.toLocaleString()}
                           </TableCell>
+                          
                           <TableCell>
-                            {tx.JournalPrimaryDescription}
+                            {tx.ContraGLAccountDescription}
                           </TableCell>
                         </TableRow>
                       ))
                     ) : (
                       <TableRow>
                         <TableCell
-                          colSpan={5}
-                          className="text-center py-2 text-gray-500 bg-gray-100"
-                        >
-                          No transactions found.
+                          colSpan={6}
+                          className="text-center py-2 text-gray-500 bg-gray-200 w-full"
+                        >           
+                          <div className="text-gray-500 text-center mt-4">
+                            <img
+                              src={NotFoundImage}
+                              alt="Not Found"
+                              className="mx-auto w-42 h-auto"
+                            />
+                            <p className="font-medium text-gray-400"> No transactions found. </p>
+                          </div>
                         </TableCell>
                       </TableRow>
                     )}
@@ -188,3 +220,8 @@ export default function AccountDrawer({ account, open, onClose }) {
     </AnimatePresence>
   );
 }
+
+
+
+
+

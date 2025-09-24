@@ -4,6 +4,7 @@ import { FaWarehouse, FaPlus, FaCalendarAlt, FaUser, FaEdit, FaTrash } from "rea
 import AddInvLocationDrawer from "./AddInvLocationDrawer";
 import EditInvLocationDrawer from "./EditInvLocationDrawer";
 import Swal from "sweetalert2";
+import NotFoundImage from "/assets/scopefinding.png";
 
 export default function InvLocation() {
   const [locations, setLocations] = useState([]);
@@ -139,7 +140,10 @@ export default function InvLocation() {
             ))}
           </div>
         ) : (
-          <p className="text-gray-500 text-center py-6">No locations found.</p>
+          <div className="text-gray-500 text-center mt-4">
+            <img src={NotFoundImage} alt="Not Found" className="mx-auto w-42 h-auto" />
+            <p className="font-medium text-gray-400">No locations found.</p>
+          </div>
         )}
       </div>
 

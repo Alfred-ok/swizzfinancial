@@ -4,10 +4,10 @@ import { FiSearch, FiBell, FiHelpCircle } from "react-icons/fi";
 
 export default function Navbar() {
   return (
-    <div className="h-12 bg-indigo-800  flex items-center justify-between px-4 text-white sticky top-0 z-50">
+    <div className="h-12 bg-indigo-800  flex items-center justify-between px-4 text-white sticky top-0 z-45">
       {/* Left: Workspace / Branding */}
       <div className="flex items-center space-x-4 ml-15">
-        <span className="font-bold">Swizz Financial</span>
+        <span className="font-bold">Swift Financial</span>
         {/*<Link to="/" className="hover:text-gray-300 text-sm">Home</Link>
         <Link to="/settings" className="hover:text-gray-300 text-sm">Settings</Link>*/}
       </div>

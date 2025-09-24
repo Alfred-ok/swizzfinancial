@@ -4,6 +4,8 @@ import { FaBox, FaPlus, FaEdit, FaTrash, FaChevronDown, FaChevronUp } from "reac
 import AddInvItemDrawer from "./AddInvItemDrawer";
 import EditInvItemDrawer from "./EditInvItemDrawer";
 import Swal from "sweetalert2";
+import NotFoundImage from "/assets/scopefinding.png";
+import StockJournalDrawer from "./StockJournalDrawer";
 
 export default function Invitem() {
   const [items, setItems] = useState([]);
@@ -12,6 +14,10 @@ export default function Invitem() {
   const [editDrawerOpen, setEditDrawerOpen] = useState(false);
   const [editItem, setEditItem] = useState(null);
   const [expanded, setExpanded] = useState({}); // toggle details
+
+  const [stockDrawerOpen, setStockDrawerOpen] = useState(false);
+  const [selectedItem, setSelectedItem] = useState(null);
+
 
   const fetchItems = () => {
     fetch(`${import.meta.env.VITE_APP_INV_URL}/api/items`, {
@@ -76,7 +82,7 @@ export default function Invitem() {
 
       {/* Table */}
       <div className="bg-gray-200 p-4 rounded-sm">
-        <div className="grid grid-cols-5 gap-4 bg-gray-700 text-gray-100 font-semibold p-3 rounded-lg mb-4">
+        <div className="grid grid-cols-8 gap-4 bg-gray-700 text-gray-100 font-semibold p-3 rounded-lg mb-4">
           <span>Item ID</span>
           <span>Item No</span>
           <span>Description</span>
@@ -103,14 +109,25 @@ export default function Invitem() {
                 key={item.Id}
                 className="bg-white rounded-lg shadow-lg hover:shadow-xl transition-all border"
               >
-                <div className="grid grid-cols-5 gap-4 items-center py-4 px-6">
-                  <span>{item.ItemId}</span>
-                  <span>{item.ItemNo}</span>
-                  <span className="font-medium text-indigo-700">
+                <div className="grid grid-cols-8 gap-4 items-center py-4 px-6">
+                  <span className="col-span-1">{item.ItemId}</span>
+                  <span className="col-span-1">{item.ItemNo}</span>
+                  <span className="font-medium text-indigo-700 col-span-2">
                     {item.Description}
                   </span>
-                  <span>{item.InventoryBalance}</span>
-                  <div className="flex justify-end gap-2">
+                  <span className="col-span-1">{item.InventoryBalance}</span>
+                  <Button
+                    size="sm"
+                    className="bg-gray-600 hover:bg-gray-700 col-span-1"
+                    onClick={() => {
+                      setSelectedItem(item);
+                      setStockDrawerOpen(true);
+                    }}
+                  >
+                   Item Journal
+                  </Button>
+
+                  <div className="flex justify-end gap-2 col-span-2">
                     <Button
                       size="sm"
                       className="bg-blue-600 hover:bg-blue-700"
@@ -168,7 +185,10 @@ export default function Invitem() {
             ))}
           </div>
         ) : (
-          <p className="text-gray-500 text-center mt-4">No items found.</p>
+           <div className="text-gray-500 text-center mt-4">
+            <img src={NotFoundImage} alt="Not Found" className="mx-auto w-42 h-auto" />
+            <p className="font-medium text-gray-400">No items found.</p>
+          </div>
         )}
       </div>
 
@@ -186,6 +206,12 @@ export default function Invitem() {
         onSuccess={fetchItems}
         item={editItem}
       />
+      <StockJournalDrawer
+  open={stockDrawerOpen}
+  onClose={() => setStockDrawerOpen(false)}
+  item={selectedItem}
+/>
+
     </div>
   );
 }

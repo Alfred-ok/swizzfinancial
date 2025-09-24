@@ -231,6 +231,7 @@ import { Button } from "@/components/ui/button";
 import { FaBook, FaChevronDown, FaChevronUp, FaFileExcel } from "react-icons/fa";
 import * as XLSX from "xlsx";   // Excel export library
 import Swal from "sweetalert2";
+import NotFoundImage from "/assets/scopefinding.png";
 
 export default function InvTransactions() {
   const [transactions, setTransactions] = useState([]);
@@ -370,9 +371,10 @@ export default function InvTransactions() {
               ))}
             </div>
           ) : (
-            <p className="text-gray-500 text-center mt-4">
-              No transactions found.
-            </p>
+             <div className="text-gray-500 text-center mt-4">
+                <img src={NotFoundImage} alt="Not Found" className="mx-auto w-42 h-auto" />
+                <p className="font-medium text-gray-400">No transactions found.</p>
+              </div>
           )}
         </div>
       </div>

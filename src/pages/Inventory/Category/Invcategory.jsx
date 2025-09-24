@@ -4,6 +4,7 @@ import { FaLayerGroup, FaPlus, FaCalendarAlt, FaUser, FaEdit, FaTrash } from "re
 import AddInvCategoryDrawer from "./AddInvCategoryDrawer";
 import EditInvCategoryDrawer from "./EditInvCategoryDrawer";
 import Swal from "sweetalert2";
+import NotFoundImage from "/assets/scopefinding.png";
 
 export default function Invcategory() {
   const [categories, setCategories] = useState([]);
@@ -145,7 +146,10 @@ export default function Invcategory() {
             ))}
           </div>
         ) : (
-          <p className="text-gray-500 text-center mt-4">No categories found.</p>
+          <div className="text-gray-500 text-center mt-4">
+            <img src={NotFoundImage} alt="Not Found" className="mx-auto w-42 h-auto" />
+            <p className="font-medium text-gray-400">No categories found.</p>
+          </div>
         )}
       </div>
 

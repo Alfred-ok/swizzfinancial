@@ -46,7 +46,7 @@ export default function AddAccountDrawer({ open, onClose, onSuccess }) {
     const fetchParents = async () => {
       try {
         const res = await fetch(
-          `${import.meta.env.VITE_APP_BASE_URL}/api/values/GetChartOfAccount`,
+          `${import.meta.env.VITE_APP_FIN_URL}/api/values/GetChartOfAccount`,
           {
             headers: { "ngrok-skip-browser-warning": "true" },
           }
@@ -83,7 +83,7 @@ export default function AddAccountDrawer({ open, onClose, onSuccess }) {
 
     try {
       const res = await fetch(
-        `${import.meta.env.VITE_APP_BASE_URL}/api/values/chartofaccount`,
+        `${import.meta.env.VITE_APP_FIN_URL}/api/values/chartofaccount`,
         {
           method: "POST",
           headers: {
@@ -145,33 +145,29 @@ export default function AddAccountDrawer({ open, onClose, onSuccess }) {
 
           {/* Drawer */}
           <motion.div
-            className="fixed top-0 right-0 h-full w-140 bg-white shadow-xl z-50 flex flex-col"
+            className="fixed top-5 right-3 rounded-2xl w-140 bg-white shadow-xl z-50 flex flex-col"
             initial={{ x: "100%" }}
             animate={{ x: 0 }}
             exit={{ x: "100%" }}
             transition={{ type: "spring", stiffness: 300, damping: 30 }}
           >
-            {/* Header */}
-            <div className="p-4 flex justify-between items-center border-b ">
-              <h2 className="font-bold text-lg">Create Chart of Account</h2>
-              <Button variant="outline" size="sm" onClick={onClose}>
-                Close
-              </Button>
-            </div>
 
             {/* Content */}
-            <div className="p-4 overflow-y-auto flex-1 bg-indigo-400">
+            <div className=" overflow-y-auto flex-1 bg-gray-100- rounded-2xl">
               <Card className="rounded-xl border bg-transparent border-none shadow-none">
                 <CardHeader>
-                  <CardTitle className="text-md bg-indigo-800 text-white p-4 rounded-xl">
-                    Account Details
+                  <CardTitle className="text-md bg-indigo-800 text-white p-4 rounded-xl flex justify-between items-center">
+                    <h2 className="font-bold text-lg">Create Chart of Account</h2>
+                    <Button variant="outline" size="sm" className="text-gray-800" onClick={onClose}>
+                      Close
+                    </Button>
                   </CardTitle>
                 </CardHeader>
                 <CardContent>
                   <form className="space-y-4" onSubmit={handleSubmit}>
                     {/* Account Name */}
                     <div>
-                      <Label htmlFor="accountName" className="text-white">
+                      <Label htmlFor="accountName">
                         Account Name
                       </Label>
                       <Input
@@ -187,7 +183,7 @@ export default function AddAccountDrawer({ open, onClose, onSuccess }) {
 
                     {/* Account Code */}
                     <div>
-                      <Label htmlFor="accountCode" className="text-white">
+                      <Label htmlFor="accountCode" >
                         Account Code
                       </Label>
                       <Input
@@ -203,7 +199,7 @@ export default function AddAccountDrawer({ open, onClose, onSuccess }) {
 
                     {/* Account Type */}
                     <div>
-                      <Label className="text-white">Account Type</Label>
+                      <Label >Account Type</Label>
                       <Select
                         value={form.accountType}
                         onValueChange={(val) =>
@@ -225,7 +221,7 @@ export default function AddAccountDrawer({ open, onClose, onSuccess }) {
 
                     {/* Account Category */}
                     <div>
-                      <Label className="text-white">Account Category</Label>
+                      <Label >Account Category</Label>
                       <Select
                         value={form.accountCategory}
                         onValueChange={(val) =>
@@ -247,14 +243,14 @@ export default function AddAccountDrawer({ open, onClose, onSuccess }) {
 
                     {/* ✅ Parent ID Dropdown */}
                     <div>
-                      <Label className="text-white">Parent Account</Label>
+                      <Label >Parent Account</Label>
                       <Select
                         value={form.parentId}
                         onValueChange={(val) =>
                           handleSelectChange("parentId", val)
                         }
                       >
-                        <SelectTrigger className="bg-white">
+                        <SelectTrigger >
                           <SelectValue placeholder="Select parent (optional)" />
                         </SelectTrigger>
                         <SelectContent>
@@ -269,7 +265,7 @@ export default function AddAccountDrawer({ open, onClose, onSuccess }) {
 
                     {/* Depth */}
                     <div>
-                      <Label htmlFor="depth" className="text-white">
+                      <Label htmlFor="depth" >
                         Depth
                       </Label>
                       <Input

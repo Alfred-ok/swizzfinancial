@@ -507,6 +507,7 @@ import Swal from "sweetalert2";
 import AddInvJournalDrawer from "./AddInvJournalDrawer";
 import EditInvJournalDrawer from "./EditInvJournalDrawer";
 import { MdCancel, MdEditDocument, MdOutlinePostAdd } from "react-icons/md";
+import NotFoundImage from "/assets/scopefinding.png";
 
 export default function InvJournal() {
   const [journals, setJournals] = useState([]);
@@ -756,7 +757,10 @@ export default function InvJournal() {
             ))}
           </div>
         ) : (
-          <p className="text-gray-500 text-center mt-4">No journals found.</p>
+          <div className="text-gray-500 text-center mt-4">
+            <img src={NotFoundImage} alt="Not Found" className="mx-auto w-42 h-auto" />
+            <p className="font-medium text-gray-400">No journals found.</p>
+          </div>
         )}
       </div>
 

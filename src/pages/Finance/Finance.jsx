@@ -100,13 +100,7 @@ export default function Finance() {
             <h1 className="text-2xl font-semibold tracking-tigh text-white">Finance Dashboard</h1>
             <p className="text-sm text-white">General Ledger · Cost Centers · Banks · Reconciliations</p>
           </div>
-          <div className="flex w-full max-w-lg items-center gap-2">
-            <div className="relative w-full text-white">
-              <Search className="absolute left-2 top-2.5 h-4 w-4  text-white" />
-              <Input placeholder="Search ledger, accounts, documents…" className="pl-8 text-white" />
-            </div>
-            <Button variant="outline" className="gap-2"><Download className="h-4 w-4"/>Export</Button>
-          </div>
+          
         </div>
 
         {/* Grid */}
@@ -237,20 +231,20 @@ export default function Finance() {
           {/* RIGHT COLUMN */}
           <div className="space-y-6">
             {/* Banks */}
-            <Card className="shadow-sm">
+            <Card className="shadow-sm bg-indigo-600">
               <CardHeader className="pb-3">
                 <div className="flex items-center justify-between">
                   <div>
-                    <CardTitle className="text-lg">Banks</CardTitle>
-                    <CardDescription>Cash & equivalents</CardDescription>
+                    <CardTitle className="text-lg text-white">Banks</CardTitle>
+                    <CardDescription className="text-white">Cash & equivalents</CardDescription>
                   </div>
-                  <Button variant="outline" size="sm" className="gap-2"><Landmark className="h-4 w-4"/>Manage</Button>
+                  <Button variant="outline" size="sm" className="gap-2"><Landmark className="h-4 w-4"/>View More</Button>
                 </div>
               </CardHeader>
               <CardContent className="space-y-3">
                 {banks.map((b) => (
-                  <div key={b.name} className="flex items-center justify-between rounded-xl border p-3">
-                    <div className="flex items-center gap-3">
+                  <div key={b.name} className="flex items-center justify-between rounded-xl border p-3 bg-white">
+                    <div className="flex items-center gap-3 ">
                       <div className="grid h-10 w-10 place-items-center rounded-xl bg-primary/10">
                         <Banknote className="h-5 w-5 text-primary" />
                       </div>
@@ -269,14 +263,14 @@ export default function Finance() {
             </Card>
 
             {/* Bank Reconciliation */}
-            <Card className="shadow-sm">
+            <Card className="shadow-sm bg-indigo-600">
               <CardHeader>
-                <CardTitle className="text-lg">Bank Reconciliation</CardTitle>
-                <CardDescription>Match statements & ledger</CardDescription>
+                <CardTitle className="text-lg text-white">Bank Reconciliation</CardTitle>
+                <CardDescription className="text-white">Match statements & ledger</CardDescription>
               </CardHeader>
               <CardContent className="space-y-4">
                 {reconciles.map((r) => (
-                  <div key={r.bank} className="rounded-2xl border p-4">
+                  <div key={r.bank} className="rounded-2xl border p-4 bg-white">
                     <div className="mb-2 flex items-center justify-between">
                       <div className="flex items-center gap-2">
                         <Recycle className="h-4 w-4"/>

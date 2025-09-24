@@ -5,6 +5,7 @@ import { Card, CardContent } from "@/components/ui/card";
 import { Button } from "@/components/ui/button";
 import AccountDrawer from "./AccountDrawer";
 import AddAccountDrawer from "./AddAccountDrawer";
+import NotFoundImage from "/assets/scopefinding.png";
 
 export default function ChartOfAccounts() {
   const [accounts, setAccounts] = useState([]);
@@ -29,7 +30,7 @@ export default function ChartOfAccounts() {
 
   const fetchAccounts = () => {
     setLoading(true); // ✅ start loading
-    fetch(`${import.meta.env.VITE_APP_BASE_URL}/api/values/GetGeneralLeadgersBalances`, {
+    fetch(`${import.meta.env.VITE_APP_FIN_URL}/api/values/GetGeneralLeadgersBalances`, {
       headers: { "ngrok-skip-browser-warning": "true" },
     })
       .then((res) => res.json())
@@ -87,7 +88,7 @@ export default function ChartOfAccounts() {
         <h3 className="font-bold text-white mb-4 bg-indigo-700 px-4 py-3 rounded-lg">
           Account Types
         </h3>
-        <div className="space-y-3 overflow-y-auto h-[calc(100vh-100px)] bg-indigo-100 p-3 rounded-lg">
+        <div className="space-y-3 overflow-y-auto h-[calc(100vh-100px)] bg-gray-200 p-3 rounded-lg">
           {loading
             ? Array.from({ length: 5 }).map((_, i) => (
                 <div
@@ -145,7 +146,7 @@ export default function ChartOfAccounts() {
         {/* Account table */}
         <div
           ref={tableContainerRef}
-          className="flex-1 overflow-y-auto p-8 bg-indigo-100 relative z-0"
+          className="flex-1 overflow-y-auto p-8 bg-gray-200 relative z-0"
         >
           {/* Table Header */}
           <div className="flex font-semibold text-gray-200 text-sm px-4 py-2 bg-indigo-700 rounded-md">
@@ -203,9 +204,14 @@ export default function ChartOfAccounts() {
 
           {/* Empty state */}
           {!loading && filteredAccounts.length === 0 && (
-            <p className="text-center text-gray-500 py-4">
-              No accounts found for {selectedCategory}.
-            </p>
+            <div className="text-gray-500 text-center mt-4">
+            <img
+              src={NotFoundImage}
+              alt="Not Found"
+              className="mx-auto w-42 h-auto"
+            />
+            <p className="font-medium text-gray-400"> No accounts found for {selectedCategory}.</p>
+          </div>
           )}
 
           {/* Pagination Controls */}

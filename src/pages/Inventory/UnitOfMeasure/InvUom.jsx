@@ -4,6 +4,7 @@ import { FaBalanceScale, FaPlus, FaUser, FaEdit, FaTrash } from "react-icons/fa"
 import AddInvUomDrawer from "./AddInvUomDrawer";
 import EditInvUomDrawer from "./EditInvUomDrawer";
 import Swal from "sweetalert2";
+import NotFoundImage from "/assets/scopefinding.png";
 
 export default function InvUom() {
   const [uoms, setUoms] = useState([]);
@@ -136,7 +137,10 @@ export default function InvUom() {
             ))}
           </div>
         ) : (
-          <p className="text-gray-500 text-center mt-4">No UOMs found.</p>
+          <div className="text-gray-500 text-center mt-4">
+            <img src={NotFoundImage} alt="Not Found" className="mx-auto w-42 h-auto" />
+            <p className="font-medium text-gray-400">No UOMs found.</p>
+          </div>
         )}
       </div>
 
