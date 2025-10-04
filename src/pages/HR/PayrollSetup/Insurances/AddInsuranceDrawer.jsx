@@ -18,7 +18,7 @@ export default function AddInsuranceDrawer({ open, onClose, onSuccess }) {
 
     try {
       const res = await fetch(
-        "https://b6d41abe4044.ngrok-free.app/api/employee-insurance-companies",
+        `${import.meta.env.VITE_APP_HR_URL}/api/employee-insurance-companies`,
         {
           method: "POST",
           headers: {

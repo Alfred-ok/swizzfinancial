@@ -19,7 +19,7 @@ export default function AddBankDrawer({ open, onClose, onSuccess }) {
 
     try {
       const res = await fetch(
-        "https://b6d41abe4044.ngrok-free.app/api/employee-banks",
+        `${import.meta.env.VITE_APP_HR_URL}/api/employee-banks`,
         {
           method: "POST",
           headers: {

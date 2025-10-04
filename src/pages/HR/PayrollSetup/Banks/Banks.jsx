@@ -26,7 +26,7 @@ export default function Banks() {
   // Fetch banks
   const fetchBanks = () => {
     setLoading(true);
-    fetch("https://b6d41abe4044.ngrok-free.app/api/employee-banks", {
+    fetch(`${import.meta.env.VITE_APP_HR_URL}/api/employee-banks`, {
       headers: { "ngrok-skip-browser-warning": "true" },
     })
       .then((res) => res.json())
@@ -55,7 +55,7 @@ export default function Banks() {
       if (result.isConfirmed) {
         try {
           const res = await fetch(
-            `https://b6d41abe4044.ngrok-free.app/api/employee-banks/${code}`,
+            `${import.meta.env.VITE_APP_HR_URL}/api/employee-banks/${code}`,
             {
               method: "DELETE",
               headers: { "ngrok-skip-browser-warning": "true" },

@@ -30,7 +30,7 @@ export default function EditInsuranceDrawer({ open, onClose, onSuccess, company 
 
     try {
       const res = await fetch(
-        `https://b6d41abe4044.ngrok-free.app/api/employee-insurance-companies/${formData.Code}`,
+        `${import.meta.env.VITE_APP_HR_URL}/api/employee-insurance-companies/${formData.Code}`,
         {
           method: "PUT",
           headers: {

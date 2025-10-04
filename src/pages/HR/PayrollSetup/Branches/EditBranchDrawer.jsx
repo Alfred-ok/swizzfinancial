@@ -25,7 +25,7 @@ export default function EditBranchDrawer({ open, onClose, onSuccess, branch }) {
 
   // Load banks for dropdown
   useEffect(() => {
-    fetch("https://b6d41abe4044.ngrok-free.app/api/employee-banks", {
+    fetch(`${import.meta.env.VITE_APP_HR_URL}/api/employee-banks`, {
       headers: { "ngrok-skip-browser-warning": "true" },
     })
       .then((res) => res.json())
@@ -53,7 +53,7 @@ export default function EditBranchDrawer({ open, onClose, onSuccess, branch }) {
 
     try {
       const res = await fetch(
-        `https://b6d41abe4044.ngrok-free.app/api/employee-branches/${branch.Code}`,
+        `${import.meta.env.VITE_APP_HR_URL}/api/employee-branches/${branch.Code}`,
         {
           method: "PUT",
           headers: {

@@ -22,7 +22,7 @@ export default function InsuranceCompanies() {
   // Fetch insurance companies
   const fetchCompanies = () => {
     setLoading(true);
-    fetch("https://b6d41abe4044.ngrok-free.app/api/employee-insurance-companies", {
+    fetch(`${import.meta.env.VITE_APP_HR_URL}/api/employee-insurance-companies`, {
       headers: { "ngrok-skip-browser-warning": "true" },
     })
       .then((res) => res.json())
@@ -51,7 +51,7 @@ export default function InsuranceCompanies() {
       if (result.isConfirmed) {
         try {
           const res = await fetch(
-            `https://b6d41abe4044.ngrok-free.app/api/employee-insurance-companies/${code}`,
+            `${import.meta.env.VITE_APP_HR_URL}/api/employee-insurance-companies/${code}`,
             {
               method: "DELETE",
               headers: { "ngrok-skip-browser-warning": "true" },

@@ -1,8 +1,5 @@
 
 
-
-
-
 import { Link, useLocation, useNavigate } from "react-router-dom";
 import { CgGhost } from "react-icons/cg";
 import { useEffect } from "react";

@@ -25,7 +25,7 @@ export default function Branches() {
   // Fetch branches
   const fetchBranches = () => {
     setLoading(true);
-    fetch("https://b6d41abe4044.ngrok-free.app/api/employee-branches", {
+    fetch(`${import.meta.env.VITE_APP_HR_URL}/api/employee-branches`, {
       headers: { "ngrok-skip-browser-warning": "true" },
     })
       .then((res) => res.json())
@@ -54,7 +54,7 @@ export default function Branches() {
       if (result.isConfirmed) {
         try {
           const res = await fetch(
-            `https://b6d41abe4044.ngrok-free.app/api/employee-branches/${code}`,
+            `${import.meta.env.VITE_APP_HR_URL}/api/employee-branches/${code}`,
             {
               method: "DELETE",
               headers: { "ngrok-skip-browser-warning": "true" },

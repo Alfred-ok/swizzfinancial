@@ -34,11 +34,15 @@ import ProRequisitions from "./pages/Procurement/Requisitions/ProRequisitions.js
 import PurchaseOrder from "./pages/Procurement/PurchaseOrder/PurchaseOrder.jsx";
 import BankLinkages from "./pages/Finance/Setup/Bank/BankLinkages.jsx";
 import AccountConfiguration from "./pages/Finance/Setup/AccountConfiguration/AccountConfiguration.jsx";
-import PurchaseInvoices from "./pages/Finance/PurchaseInvoice/PurchaseInvoices.jsx";
-import PurchaseCreditMemo from "./pages/Finance/PurchaseCreditMemo/PurchaseCreditMemo.jsx";
 import PayrollSetup from "./pages/HR/PayrollSetup/PayrollSetup.jsx";
 import StatutorySetup from "./pages/HR/Statutory setup/StatutorySetup.jsx";
 import StoreRequisitions from "./pages/Procurement/StoreRequisitions/StoreRequisitions.jsx";
+import SalesInvoices from "./pages/Finance/AccountsReceivable/SalesInvoice/salesInvoice.jsx";
+import SalesCreditMemo from "./pages/Finance/AccountsReceivable/SalesCreditMemo/SalesCreditMemo.jsx";
+import Setup from "./pages/Finance/Setup/Setup.jsx";
+import AccountPayable from "./pages/Finance/AccountPayable/AccountPayable.jsx";
+import AccountsReceivable from "./pages/Finance/AccountsReceivable/AccountsReceivable.jsx";
+import PaymentVoucher from "./pages/Finance/PaymentVoucher/PaymentVoucher.jsx";
 
 
 export default function App() {
@@ -70,13 +74,16 @@ export default function App() {
           <Route path="Finance/PostingJournal" element={<PostingJournal/>} />
           <Route path="Finance/BanksSetup" element={<BankLinkages/>} />
           <Route path="Finance/AccountConfiguration" element={<AccountConfiguration/>} />
-          <Route path="Finance/PurchaseInvoices" element={<PurchaseInvoices/>} />
-          <Route path="Finance/PurchaseCreditMemo" element={<PurchaseCreditMemo/>} />
+          <Route path="Finance/salesInvoice" element={<SalesInvoices/>} />
+          <Route path="Finance/salesCreditMemo" element={<SalesCreditMemo/>} />
+          <Route path="Finance/Setup" element={<Setup/>} />
+          <Route path="Finance/PaymentVoucher" element={<PaymentVoucher/>} />
           <Route path="Finance/GeneralLedger" element={<GeneralLedger/>} />
           <Route path="GeneralLedger/reports" element={<h1>GL Reports</h1>} />
           <Route path="GeneralLedger/settings" element={<h1>GL Settings</h1>} />
 
-          <Route path="AccountsPayable" element={<h1>Accounts Payable</h1>} />
+          <Route path="Finance/AccountsPayable" element={<AccountPayable/>} />
+          <Route path="Finance/AccountsReceivable" element={<AccountsReceivable/>} />
           <Route path="AccountsPayable/reports" element={<h1>AP Reports</h1>} />
           <Route path="AccountsPayable/settings" element={<h1>AP Settings</h1>} />
           <Route path="AccountsReceivable" element={<h1>Accounts Receivable</h1>} />

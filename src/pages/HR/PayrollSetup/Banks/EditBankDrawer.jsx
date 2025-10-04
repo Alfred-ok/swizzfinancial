@@ -31,7 +31,7 @@ export default function EditBankDrawer({ open, onClose, onSuccess, bank }) {
 
     try {
       const res = await fetch(
-        `https://b6d41abe4044.ngrok-free.app/api/employee-banks/${bank.Code}`,
+        `${import.meta.env.VITE_APP_HR_URL}/api/employee-banks/${bank.Code}`,
         {
           method: "PUT",
           headers: {
